@@ -18,7 +18,7 @@
                      ˜  Tolerancia  <br>
 
                    </p>
-               	<div class="button">
+               	<div >
                 		<center></center>
                 	</div><!--End of Button Div-->
                </div><!--End of rightFooter Div-->
@@ -28,7 +28,7 @@
                	<p>
                     Un Colegio reconocido socialmente por su calidad académica y educativa, por su orientación a resultados, por su innovación constante, su apertura a la sociedad y por la apuesta decidida por los valores que derivan del Ideario.
                    </p>	</center>
-               	<div class="button">
+               	<div >
                 		<center></center>
                 	</div><!--End of Button Div-->
                </div>

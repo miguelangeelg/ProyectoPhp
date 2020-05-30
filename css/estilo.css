@@ -281,7 +281,7 @@ button:hover{
 
 .form_wrap{
     width: 1050px;
-    height: 530px;
+    height: 580px;
     margin: 50px auto;
     display: flex;
 
@@ -289,6 +289,19 @@ button:hover{
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.form_EstudianteDocente{
+  width: 1050px;
+  height: 1080px;
+  margin: 50px auto;
+  display: flex;
+
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Informacion de Contacto*/
@@ -730,14 +743,166 @@ form.form_contact input[type="button"]:hover{
               position: relative;
               top: -100px;
           }
-          
-          #materia{
-            position: absolute;
-            top: 470px;
-          }
+      
+         /*BUTON 3*/
 
-          #grupo{
-            position: absolute;
-            top: 0px;
-            right: -px;
-          }
+         .button3 {
+          background-color: #3371B6; /* Green */
+          border: none;
+          color: white;
+          padding: 16px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          transition-duration: 0.4s;
+          cursor: pointer;
+        }
+        .button3 {
+          background-color: white; 
+          color: black; 
+          border: 2px solid #3371B6;
+        }
+        
+        .button3:hover {
+          background-color: #3371B6;
+          color: white;
+        }
+        
+        .button3 span {
+          cursor: pointer;
+          display: inline-block;
+          position: relative;
+          transition: 0.5s;
+        }
+        
+        .button3 span:after {
+          content: '\00bb';
+          position: absolute;
+          opacity: 0;
+          top: 0;
+          right: -20px;
+          transition: 0.5s;
+        }
+        
+        .button3:hover span {
+          padding-right: 25px;
+        }
+        
+        .button3:hover span:after {
+          opacity: 1;
+          right: 0;
+        }
+
+        /*BOTON REGRESAR*/
+        .buttonRegresar {
+          background-color: red; /* Green */
+          border: none;
+          color: white;
+          padding: 16px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          transition-duration: 0.4s;
+          cursor: pointer;
+        }
+        .buttonRegresar {
+          background-color: white; 
+          color: black; 
+          border: 2px solid red;
+        }
+        
+        .buttonRegresar:hover {
+          background-color: red;
+          color: white;
+        }
+        
+        .buttonRegresar span {
+          cursor: pointer;
+          display: inline-block;
+          position: relative;
+          transition: 0.5s;
+        }
+        
+        .buttonRegresar span:after {
+          content: '\00bb';
+          position: absolute;
+          opacity: 0;
+          top: 0;
+          right: -20px;
+          transition: 0.5s;
+        }
+        
+        .buttonRegresar:hover span {
+          padding-right: 25px;
+        }
+        
+        .buttonRegresar:hover span:after {
+          opacity: 1;
+          right: 0;
+        }
+
+        /*TITULO ADMIN*/
+        #TituloAdmin{
+          color: #3371B6;
+        }
+
+
+
+        /*FORMULARIO DE ESTUDIAANTES Y PROFESORES*/
+
+        input[type=text] {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+
+        
+        
+        input[type=email] {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+
+        input[type=password] {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+
+        input[type=submit] {
+          width: 100%;
+          background-color: #3371B6;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        
+        input[type=submit]:hover {
+          background-color: #3371B6;
+        }
+        
+        .FormularioCentral{
+          width: 900px;
+          height: 600´px;
+        }
+

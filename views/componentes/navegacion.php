@@ -29,7 +29,7 @@
                     <li class="navButtons"><a href="">Nombre</a></li>
                     <li class="navButtons"><a href="/proyectoPhp/views/gestionProfesor.php">Gestión docente</a></li>
                     <li class="navButtons"><a href="/ProyectoPhp/views/gestionEstudiante.php">Gestión estudiante</a></li>
-                    <li class="navButtons"><a href="/ProyectoPhp/views/gestionEstudiante.php">Gestión ADMINISTRADOR</a></li>
+                    <li class="navButtons"><a href="/ProyectoPhp/views/gestionAdministrador.php">Gestión ADMINISTRADOR</a></li>
                     <li class="navButtons"><a href="/ProyectoPhp/views/Login.php">Iniciar sesión</a></li>
                     <li class="navButtons"><a href="">Cerrar sesión</a></li>
                 </ul>

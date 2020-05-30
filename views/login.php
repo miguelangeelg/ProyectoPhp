@@ -26,7 +26,7 @@ include("./componentes/navegacion.php");
         <input type="password" name="txtClave" id="clave" style="border-radius: 20px / 10px;">
 
         
-        <input type="submit" class="btn btn-success" name="btnIniciasSesion" value="INICIAR SESIÓN" style="background-color:#4091EC; color: white;border:gainsboro 8px outset;border-radius: 20px / 10px;" >
+        <input type="submit" class="button3" name="btnIniciasSesion" value="INICIAR SESIÓN" >
     </div>
 </form>
 

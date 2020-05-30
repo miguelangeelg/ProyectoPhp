@@ -3,24 +3,55 @@ include("./componentes/navegacion.php");
 
 ?>      
         <div id="contentWrapper">
-        <select class="classic" id="periodo">
+        <div >
+        <center>
+                <br>
+<table width="600" border="0" cellspacing="0" cellpadding="1">
+        <tr bgcolor="#2196F3" align="center">
+        <td><b><font color="#FFFFFF">Docente  : Juanito Perez</font></b></td>
+        </tr>
+        <tr bgcolor="#2196F3">
+        <td>
+        
+<table width="100%" border="0" cellspacing="0" cellpadding="4">
+        <tr bgcolor="#FFFFFF">
+        <td>
+        <center>
+        <p><span class="fa fa-envelope"></span>Documento : 100074612</p>
+        <p><span class="fa fa-mobile"></span>Nombres : Fulanito De Tal</p>
+        <p><span class="fa fa-mobile"></span>Correo : correo@correo.com</p>
+        <p><span class="fa fa-mobile"></span>Teléfono : 333022232</p>
+        <p><span class="fa fa-mobile"></span>Profesión : Licenciado</p>
+        </center>
+        </td>
+        </tr>
+</table>
+        </td>
+        </tr>
+</table>
+
+        </center>
+        </div>  
+        <select class="classic" style="top: 40px; left:45%;">
   <option>Periodo 1</option>
   <option>Peiodo 2</option>
   <option>Periodo 3</option>
 </select>
 
 
-        <select class="classic" id="materia">
+        <select class="classic" style="top: 40px; left:5%;">
   <option>Materia 1</option>
   <option>Materia 2</option>
   <option>Materia 3</option>
-</select>
+</select> 
 
-        <select class="classic" id="grupo">
+<select class="classic" style="top: 40px; left:54%;">
   <option>Grupo 1</option>
   <option>Grupo 2</option>
   <option>grupo 3</option>
 </select>
+
+        
 
         <form action="" class="form_contact">
     <h2>ASIGNACIÓN DE CALIFICACIONES</h2>

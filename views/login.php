@@ -22,7 +22,7 @@ include("./componentes/navegacion.php");
         <label for="names">Documento *</label>
         <input type="number" name="txtDocumento" id="documento" required style="border-radius: 20px / 10px;" >
 
-        <label for="phone">Clave</label>
+        <label for="phone">Clave *</label>
         <input type="password" name="txtClave" id="clave" style="border-radius: 20px / 10px;">
 
         

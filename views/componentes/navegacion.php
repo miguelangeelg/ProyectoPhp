@@ -27,7 +27,7 @@
                     <li class="navButtons"><a href="/ProyectoPhp/views/index.php">Inicio</a></li>
                     <li class="navButtons"><a href="/ProyectoPhp/views/Contactenos.php">Contactenos</a></li>
                     <li class="navButtons"><a href="">Nombre</a></li>
-                    <li class="navButtons"><a href="">Gestión docente</a></li>
+                    <li class="navButtons"><a href="/proyectoPhp/views/gestionProfesor.php">Gestión docente</a></li>
                     <li class="navButtons"><a href="/ProyectoPhp/views/gestionEstudiante.php">Gestión estudiante</a></li>
                     <li class="navButtons"><a href="/ProyectoPhp/views/gestionEstudiante.php">Gestión ADMINISTRADOR</a></li>
                     <li class="navButtons"><a href="/ProyectoPhp/views/Login.php">Iniciar sesión</a></li>

@@ -32,10 +32,10 @@ include("./componentes/navegacion.php");
     <h1 id="TituloAdmin">¡BIENVENIDO ADMINISTRADOR!</h1>
     </div>
    <center>
-    <div class="user_info">
-    <a href="RegistroEstudiantes.php" class="button3" style="vertical-align:middle" ><span>Registro Estudiantes</span></a>
-    <a href="#" class="button3" style="vertical-align:middle"><span>Registro Docentes </span></a>
-    <a href="#"class="button3" style="vertical-align:middle"><span>Asignacion de Materias </span></a>
+    <div class="user_info" >
+        <br><br><br><br><br>
+    <a  href="RegistroEstudiantes.php" class="button3" style="vertical-align:middle" ><span>Registro Estudiantes</span></a>
+    <a href="RegistroProfesor.php" class="button3" style="vertical-align:middle"><span>Registro Docentes </span></a>
     </div>
     </center> 
 </form>

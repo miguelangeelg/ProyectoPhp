@@ -3,14 +3,14 @@ include("./componentes/navegacion.php");
 
 ?>
         <div id="contentWrapper">
-<section class="form_Estudiante">
+<section class="form_Docente">
             <form action="/action_page.php">
             <center>
     <img src="../img/ImagenRegistro.png" width="250" height="250"  alt="">
 </center>
             
             <fieldset class="FormularioCentral">
-                <legend id="TituloAdmin">REGISTRO ESTUDIANTES</legend>
+                <legend id="TituloAdmin">REGISTRO PROFESOR</legend>
     <center>
     <label for="fname">Documento:</label>
     <input type="number" id="fname" name="firstname" placeholder="Ingrese documento...">
@@ -28,12 +28,19 @@ include("./componentes/navegacion.php");
 
     <label for="fname">Dirección</label>
     <input type="text" id="fname" name="firstname" placeholder="Ingrese Dirección...">
+
+    <label for="fname">Profesión</label>
+    <input type="text" id="fname" name="firstname" placeholder="Ingrese Profesión...">
     
     <label for="fname">Correo:</label>
     <input type="email" id="fname" name="firstname" placeholder="Ingrese Correo...">
 
     <label for="fname">Contraseña</label>
     <input type="password" id="fname" name="firstname" placeholder="Ingrese Contraseña...">
+
+    
+    <label for="fname">Materia</label>
+    <input type="text" id="fname" name="firstname" placeholder="Ingrese Materia...">
 
     <label for="fname">Genero:</label>
     <input type="radio" id="male" name="gender" value="male"> Masculino &nbsp
@@ -42,14 +49,8 @@ include("./componentes/navegacion.php");
     <br>
     <label for="fname">Fecha de Nacimiento:</label>
     <input type="date" id="fname" name="firstname" >
-<br>
+   
 
-<label for="country">Grupo:</label>
- <select class="classic" style="top: 0%; left:1%;" name="country">
-      <option value="australia">1°</option>
-      <option value="canada">2°</option>
-      <option value="usa">3°</option>
-    </select> 
 
     <br>
     <br>

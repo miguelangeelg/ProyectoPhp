@@ -74,8 +74,8 @@ include("./componentes/navegacion.php");
         <label for="phone">Nota 5:</label>
         <input type="number" id="phone" style="border-radius: 20px / 10px;">
 
-        <input type="submit" class="btn btn-success" value="Consultar" style="background-color:#4091EC; color: white;border:gainsboro 8px outset;border-radius: 20px / 10px;" >
-        <input type="submit" class="btn btn-success" value="Asignar" style="background-color:#4091EC; color: white;border:gainsboro 8px outset;border-radius: 20px / 10px;" >
+        <input type="submit" class="button3" value="Consultar"  >
+        <input type="submit" class="button3" value="Asignar"  >
     </div>
 </form>
         </div><!--End of Content Wrapper-->

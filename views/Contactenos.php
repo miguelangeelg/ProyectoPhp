@@ -1,6 +1,6 @@
 <?php
 include("./componentes/navegacion.php");
-
+require("../controller/ctrEnvioCorreo.php");
 ?>
 
 
@@ -24,7 +24,7 @@ include("./componentes/navegacion.php");
     <h2>Envia un mensaje</h2>
     <div class="user_info">
         <label for="names">Nombres *</label>
-        <input type="text" id="names" required style="border-radius: 20px / 10px;" >
+        <input type="text" id="names"  required style="border-radius: 20px / 10px;" >
 
         <label for="phone">Telefono / Celular</label>
         <input type="text" id="phone" style="border-radius: 20px / 10px;">
@@ -38,6 +38,7 @@ include("./componentes/navegacion.php");
         <input type="submit" class="btn btn-success" value="Enviar Mensaje" style="background-color:#4091EC; color: white;border:gainsboro 8px outset;border-radius: 20px / 10px;" >
     </div>
 </form>
+
 
 </section>
 

@@ -6,7 +6,7 @@
 
     <title>Page Title</title>
     <meta name="description" content="COMPANY DESCRIPTION GOES HERE">
-    <link rel="stylesheet" href="main.css">
+    <!--<link rel="stylesheet" href="main.css">-->
     <link rel="stylesheet" href="../css/estilo.css">
     <link href='https://fonts.googleapis.com/css?family=Pacifico|Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 <script>var __adobewebfontsappname__="dreamweaver"</script><script src="https://use.edgefonts.net/open-sans:n3:default.js" type="text/javascript"></script>
@@ -17,7 +17,7 @@
             <div class="logo">
                 <center class="centerlogo" > 
                 	<img align="center" src="../img/logo.png" id="logo" alt="">
- 
+
                 </center>
             </div>
      

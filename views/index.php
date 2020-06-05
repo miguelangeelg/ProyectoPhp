@@ -2,6 +2,7 @@
 include("./componentes/navegacion.php");
 
 ?>
+
         <div id="contentWrapper">
         
             <div class="carousel" data-flickity='{ "autoPlay": true }'>

@@ -1,9 +1,9 @@
 <?php
 
     const SERVIDOR 	= 'localhost';
-    const NAMEDB 	= 'pruebas';
-    const USER 		= 'diego';
-    const PASSWORD 	= '123';
+    const NAMEDB 	= 'pruebacolegio';
+    const USER 		= 'root';
+    const PASSWORD 	= '';
     const CHARSET 	= 'utf8';
 
 ?>

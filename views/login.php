@@ -4,6 +4,7 @@ include("./componentes/navegacion.php");
 ?>
 
 
+
         
  
         <div id="contentWrapper">
@@ -16,14 +17,14 @@ include("./componentes/navegacion.php");
     </section>
 </section>
 
-<form action="" name="LoginForm" method="POST" class="form_contact">
+<form  name="LoginForm" method="POST" id="frmLogin" class="form_contact">
    <br><br><br><br><br><br>
     <div class="user_info">
         <label for="names">Documento *</label>
-        <input type="number" name="txtDocumento" id="documento" required style="border-radius: 20px / 10px;" >
+        <input type="number" name="txtDocumento" id="txtDocumento" required style="border-radius: 20px / 10px;" >
 
         <label for="phone">Clave *</label>
-        <input type="password" name="txtClave" id="clave" style="border-radius: 20px / 10px;">
+        <input type="password" name="txtClave" id="txtClave" style="border-radius: 20px / 10px;">
 
         
         <input type="submit" class="button3" name="btnIniciasSesion" value="INICIAR SESIÓN" >
@@ -34,6 +35,8 @@ include("./componentes/navegacion.php");
 
 
         </div><!--End of Content Wrapper-->
+
+    <script src="../js/ControllerLogin.js"></script>
    <?php 
     include("./componentes/footer.php");
    ?>

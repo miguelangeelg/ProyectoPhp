@@ -1,72 +1,84 @@
+<!-- INCLUYE  EL ENCABEZADO DE LA PAGINA -->
 <?php
 include("./componentes/navegacion.php");
-
 ?>
-        <div id="contentWrapper">
+
+
+<div id="contentWrapper">
 <section class="form_Docente">
-            <form action="/action_page.php">
-            <center>
-    <img src="../img/ImagenRegistro.png" width="250" height="250"  alt="">
-</center>
-            
-            <fieldset class="FormularioCentral">
-                <legend id="TituloAdmin">REGISTRO PROFESOR</legend>
+
+<!-- FORMULARIO DE REGISTRO-->
+<form role="form" id="frmregistro" enctype='multipart/form-data' autocomplete="off" method="post" action="../controller/ctrProfesor.php">
     <center>
-    <label for="fname">Documento:</label>
-    <input type="number" id="fname" name="firstname" placeholder="Ingrese documento...">
+        <img src="../img/ImagenRegistro.png" width="250" height="250"  alt="">
+    </center>
 
-    <label for="fname" style="margin-left: 200px">Tipo Documento:</label>
-    <input type="radio" id="male" name="gender" value="male"> CC &nbsp
-    <input type="radio" id="male" name="gender" value="male"> TI
+
+  
+<fieldset class="FormularioCentral">
+    <legend id="TituloAdmin">REGISTRO PROFESOR</legend>
+    <center>
+    <label for="documento ">Documento:</label>
+    <input type="number" id="fname" name="documento" placeholder="Ingrese documento..." >
+
+    <label for="telefono ">Telefono:</label>
+    <input type="number" id="fname" name="telefono" placeholder="Ingrese telefono..." >
+
+    <label for="tipoDocumento">Tipo Documento:</label>
+    <input type="radio" id="male" name="tipoDocumento" value="2"> CC &nbsp
+    <input type="radio" id="male" name="tipoDocumento" value="1"> TI
 
 </center>
-    <label for="fname">Nombres</label>
-    <input type="text" id="fname" name="firstname" placeholder="Ingrese nombres...">
+    <label for="nombres">Nombres</label>
+    <input type="text" id="fname" name="nombres" placeholder="Ingrese nombres...">
 
-    <label for="fname">Apellidos</label>
-    <input type="text" id="fname" name="firstname" placeholder="Ingrese apellidos...">
+    <label for="apellidos">Apellidos</label>
+    <input type="text" id="fname" name="apellidos" placeholder="Ingrese apellidos...">
 
-    <label for="fname">Dirección</label>
-    <input type="text" id="fname" name="firstname" placeholder="Ingrese Dirección...">
+    <label for="direccion">Dirección</label>
+    <input type="text" id="fname" name="direccion" placeholder="Ingrese Dirección...">
 
-    <label for="fname">Profesión</label>
-    <input type="text" id="fname" name="firstname" placeholder="Ingrese Profesión...">
+    <label for="profesion">Profesión</label>
+    <input type="text" id="fname" name="profesion" placeholder="Ingrese Profesión...">
     
-    <label for="fname">Correo:</label>
-    <input type="email" id="fname" name="firstname" placeholder="Ingrese Correo...">
+    <label for="correo">Correo:</label>
+    <input type="email" id="fname" name="correo" placeholder="Ingrese Correo...">
 
-    <label for="fname">Contraseña</label>
-    <input type="password" id="fname" name="firstname" placeholder="Ingrese Contraseña...">
+    <label for="contraseña">Contraseña</label>
+    <input type="password" id="fname" name="contraseña" placeholder="Ingrese Contraseña...">
 
     
-    <label for="fname">Materia</label>
-    <input type="text" id="fname" name="firstname" placeholder="Ingrese Materia...">
+    <label for="materia">Materia</label>
+    <input type="text" id="fname" name="materia" placeholder="Ingrese Materia...">
 
-    <label for="fname">Genero:</label>
-    <input type="radio" id="male" name="gender" value="male"> Masculino &nbsp
-    <input type="radio" id="male" name="gender" value="male"> Femenino
+    <label for="genero">Genero:</label>
+    <input type="radio" id="male" name="genero" value="2"> Masculino &nbsp
+    <input type="radio" id="male" name="genero" value="1"> Femenino
    
     <br>
-    <label for="fname">Fecha de Nacimiento:</label>
-    <input type="date" id="fname" name="firstname" >
+    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+    <input type="date" id="fname" name="fechaNacimiento" >
    
 
 
     <br>
     <br>
-    <input type="submit" value="Matricular">
+    <button type="submit" name="frmMatricular" value="Registrar">Registrar</button>
+
 </fieldset>
 
 <br>
- <a href="gestionAdministrador.php" class="buttonRegresar" style="vertical-align:top"><span>Regresar</span></a>
+<a href="gestionAdministrador.php" class="buttonRegresar" style="vertical-align:top"><span>Regresar</span></a>
 
-  </form>
+</form>
 
 
 </section>
-        </div><!--End of Content Wrapper-->
-   <?php 
-    include("./componentes/footer.php");
-   ?>
+</div><!--End of Content Wrapper-->
+   
+<!-- INCLUYE  EL PIE DE PAGINA -->
+<?php 
+include("./componentes/footer.php");
+?>
 
   

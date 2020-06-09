@@ -1,15 +1,14 @@
 <?php
 
-//require('../db/ConectarNotas.php');
-$periodo=$_POST["periodo"];
-return $periodo;
-/*class Nota
+require('../db/ConectarNotas.php');
+
+class Nota
 {
     private $periodo;
     private $conexionDB;
     public function __construct(){        
         $this->conexionDB = new Conectar();	
-       // $this->periodo=$_POST["periodo"];							
+        $this->periodo=$_POST["periodo"];							
     }
     
     public function __destruct() {
@@ -17,16 +16,17 @@ return $periodo;
        	
    }
    public function guardarNota(){
-      $sql = "SELECT * from detalle WHERE codMateria='1' and docEstudiante='16161616' and codPeriodo='$this->periodo' and codMateria='1'";
+      $sql = "SELECT m.nombre,d.Nota1,d.Nota2,d.Nota3,d.Nota4,d.Nota5,d.NotaDefinitiva from detalle d inner join materia m on m.codigo=d.codMateria WHERE  docEstudiante='16161616' and codPeriodo='$this->periodo' ";
     $query = $this->conexionDB->connect()->query($sql);
     while ($consulta = mysqli_fetch_array($query)) {
 
         $vec []= array(
+            "Materia"=>$consulta["nombre"],
             "Nota1"=>$consulta['Nota1'],
             "Nota2"=>$consulta["Nota2"],
-            "Nota2"=>$consulta["Nota3"],
-            "Nota2"=>$consulta["Nota4"],
-            "Nota2"=>$consulta["Nota5"],
+            "Nota3"=>$consulta["Nota3"],
+            "Nota4"=>$consulta["Nota4"],
+            "Nota5"=>$consulta["Nota5"],
             "Definitiva"=>$consulta["NotaDefinitiva"],
         );
       
@@ -43,5 +43,5 @@ return $periodo;
 		return $this->clave;
 	}
 }
-*/
+
 ?>

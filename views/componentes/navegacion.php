@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,13 +30,31 @@
                 <center>
                 <ul>
                     <li class="navButtons"><a href="/ProyectoPhp/views/index.php">Inicio</a></li>
-                    <li class="navButtons"><a href="/ProyectoPhp/views/Contactenos.php">Contactenos</a></li>
-                    <li class="navButtons"><a href="">Nombre</a></li>
-                    <li class="navButtons"><a href="/proyectoPhp/views/gestionProfesor.php">Gestión docente</a></li>
-                    <li class="navButtons"><a href="/ProyectoPhp/views/gestionEstudiante.php">Gestión estudiante</a></li>
-                    <li class="navButtons"><a href="/ProyectoPhp/views/gestionAdministrador.php">Gestión ADMINISTRADOR</a></li>
-                    <li class="navButtons"><a href="/ProyectoPhp/views/Login.php">Iniciar sesión</a></li>
-                    <li class="navButtons"><a href="">Cerrar sesión</a></li>
+                <?php
+                if(isset($_SESSION["usuario"])){
+                    $tipoU    = json_decode($_SESSION["usuario"])->rol;
+                    $Nombre   = json_decode($_SESSION["usuario"])->nombre;
+                    $Apellido = json_decode($_SESSION["usuario"])->apellido;
+                    echo '   <li class="navButtons"><a href="">'.$Nombre.' '.$Apellido.'</a></li>';
+                    if($tipoU == 2){
+                        echo '  <li class="navButtons"><a href="/ProyectoPhp/views/gestionEstudiante.php">Gestión estudiante</a></li>      ';
+                    }
+
+                    if($tipoU == 1){
+                        echo '  <li class="navButtons"><a href="/proyectoPhp/views/gestionProfesor.php">Gestión docente</a></li> ';
+                    }
+
+                    if($tipoU == 3){
+                        echo ' <li class="navButtons"><a href="/ProyectoPhp/views/gestionAdministrador.php">Gestión ADMINISTRADOR</a></li>  ';
+                    }
+                    echo '  <li class="navButtons"><a href="./CerrarSesion.php">Cerrar sesión</a></li>';
+                }else{
+                        echo ' <li class="navButtons"><a href="/ProyectoPhp/views/Login.php">Iniciar sesión</a></li>';
+                }
+                ?>
+               <li class="navButtons"><a href="/ProyectoPhp/views/Contactenos.php">Contactenos</a></li>
+
+                  
                 </ul>
                 </center>
             </div><!--end of navBar-->

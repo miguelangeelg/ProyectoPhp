@@ -1,6 +1,6 @@
 <?php
 include("./componentes/navegacion.php");
-
+require ("../controller/ctrPeriodo.php");
 ?>
 
 
@@ -21,7 +21,6 @@ include("./componentes/navegacion.php");
         <p><span class="fa fa-mobile"></span>Correo : correo@correo.com</p>
         <p><span class="fa fa-mobile"></span>Teléfono : 333022232</p>
         <p><span class="fa fa-mobile"></span>Grupo : 8B</p>
-
     </section>
     </center>
 
@@ -32,12 +31,15 @@ include("./componentes/navegacion.php");
     <h2 >Calificaciones</h2>
     </div>
 
-    <select class="classic">
-  <option>Periodo 1</option>
-  <option>Peiodo 2</option>
-  <option>Periodo 3</option>
-</select>
-
+    <select class="classic" id="periodo">
+    <?php
+    if(isset($resultado)){
+        foreach ($resultado as $clave => $value) {
+            echo " <option value='".$value["Codigo"]."' >"."Periodo ".$value["Periodo"]."</option>";
+        }
+    }
+    ?>
+    </select>
 <?php include("./componentes/botonGenerarPdfEstu.php");  ?>
     <div class="user_info">
 
@@ -119,6 +121,9 @@ include("./componentes/navegacion.php");
 
 
         </div><!--End of Content Wrapper-->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="../js/ctrVerNotas.js"></script>
    <?php 
     include("./componentes/footer.php");
    ?>

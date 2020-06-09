@@ -306,7 +306,7 @@ button:hover{
 
 .form_Docente{
   width: 1050px;
-  height: 1220px;
+  height: auto;
   margin: 50px auto;
   display: flex;
 
@@ -914,6 +914,14 @@ form.form_contact input[type="button"]:hover{
         
         .FormularioCentral{
           width: 900px;
-          height: 600´px;
+          height: 600px;
         }
+
+        .FormularioCentral_Profesor{
+          width: 900px;
+          height: 1500pxpx;
+        }
+
+
+        
 

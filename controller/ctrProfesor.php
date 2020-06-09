@@ -20,7 +20,93 @@ $fechaNacimiento = filtrarDatos('fechaNacimiento');
 
 
 if(isset($_POST["frmMatricular"])){
-    
+	$var1=1;
+		
+	if(empty($documento))
+	{
+		$error = "¡Ingrese el documento!";
+	}else if (empty($telefono)) {
+		$error = "Debe ingresar el número de teléfono";
+	}else if (!is_numeric($telefono)) {
+		$error = "¡Ingrese solo números!";
+	}
+	else if (strlen($telefono) != 10) {
+		$error = "El número telefónico debe tener 10 dígitos";
+	}else if (empty($tipoDocumento)) {
+		$error = "Debe elegir el tipo de documento";
+	}
+	
+
+	if (empty($nombres)) {
+		$error1 = "Debe ingresar el nombre";
+	}
+	else if (!ctype_alpha($nombres)) {
+		$error1 = "El nombre solo deben ser letras";
+	}
+
+	if (empty($apellidos)) {
+		$error2 = "Debe ingresar el apellido";
+	}
+	else if (!ctype_alpha($apellidos)) {
+		$error2 = "El apellido solo deben ser letras";
+	}
+
+	if (empty($direccion)) {
+		$error3 = "Debe ingresar la dirección";
+	}
+
+	if (empty($profesion)) {
+		$error4 = "Debe ingresar la profesión";
+	}
+	else if (!ctype_alpha($profesion)) {
+		$error4 = "El profesión solo deben ser letras";
+	}
+	
+
+	if (empty($email)) {
+		$error5 = "Ingrese su correo electronico";
+	}
+	else if (!preg_match("/^[_.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+.)+[a-zA-Z]{2,6}$/i", $email)) {
+		$error5 = "Ingrese un coreo electronico valido";
+	}
+
+
+	if (empty($contraseña)) {
+		$error6 = "Ingrese su contraseña";
+	}else if (strlen($contraseña) < 8) {
+		$error6 = "la contraseña debe tener mínimo 8 caracteres";
+	}
+
+
+	if (empty($materia)) {
+		$error7 = "Debe ingresar la materia";
+	}
+	else if (!ctype_alpha($materia)) {
+		$error7 = "La materia solo deben ser letras";
+	}
+
+
+	if (empty($genero)) {
+		$error8 = "Debe elegir el genero";
+	}
+
+	if (empty($fechaNacimiento)) {
+		$error9 = "Debe elegir la fecha de nacimiento";
+	}
+	
+	else{
+		$var1=2;
+		
+	}
+
+	if($var1==1){
+		?>
+		<script>
+			alert('Verifique los campos, algunos se encuentran vacios');
+		</script>
+
+		<?php
+	}else{
 $modelo =new profesor();
 $profeExiste=$modelo->buscarProfesor($documento);
 
@@ -55,10 +141,11 @@ if($profeExiste==1){
     location.href="../views/RegistroProfesor.php";
     </script>
 				<?php
-    }
-}
- 
+	}
+	}
 	
+	
+}
 }
 else if(isset($_POST["frmBuscar"])){
 	if(empty($documento))

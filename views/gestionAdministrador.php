@@ -1,6 +1,29 @@
 <?php
 include("./componentes/navegacion.php");
+if(isset($_SESSION["usuario"])){
+    $documento    = json_decode($_SESSION["usuario"])->documento;
+    $Nombre   = json_decode($_SESSION["usuario"])->nombre;
+    $Apellido = json_decode($_SESSION["usuario"])->apellido;
+    $correo = json_decode($_SESSION["usuario"])->correo;
+    $telefono = json_decode($_SESSION["usuario"])->telefono;
+    $rol = json_decode($_SESSION["usuario"])->rol;
 
+    if($rol != 3){
+        ?>
+        <script>
+        alert('¡Acceso denegado! No cuenta con permisos');
+        location.href="index.php"
+        </script>
+        <?php
+    }
+}else{
+    ?>
+    <script>
+    alert('¡Acceso denegado! No cuenta con permisos');
+    location.href="index.php"
+    </script>
+    <?php
+}
 ?>
 
 
@@ -17,10 +40,10 @@ include("./componentes/navegacion.php");
     <section class="info_items">
     <center>
 
-        <p><span class="fa fa-envelope"></span>Documento : 100074612</p>
-        <p><span class="fa fa-mobile"></span>Nombres : Fulanito De Tal</p>
-        <p><span class="fa fa-mobile"></span>Correo : correo@correo.com</p>
-        <p><span class="fa fa-mobile"></span>Teléfono : 333022232</p>
+        <p><span class="fa fa-envelope"></span>Documento : <?php echo $documento?></p>
+        <p><span class="fa fa-mobile"></span>Nombres : <?php echo $Nombre ." ". $Apellido?></p>
+        <p><span class="fa fa-mobile"></span>Correo : <?php echo $correo?></p>
+        <p><span class="fa fa-mobile"></span>Teléfono : <?php echo $telefono?></p>
         </center>
 
     </section>

@@ -2,6 +2,26 @@
 <?php
 include("./componentes/navegacion.php");
 require("../controller/ctrProfesor.php");
+if(isset($_SESSION["usuario"])){
+
+    $rol = json_decode($_SESSION["usuario"])->rol;
+
+    if($rol != 3){
+        ?>
+        <script>
+        alert('¡Acceso denegado! No cuenta con permisos');
+        location.href="index.php"
+        </script>
+        <?php
+    }
+}else{
+    ?>
+    <script>
+    alert('¡Acceso denegado! No cuenta con permisos');
+    location.href="index.php"
+    </script>
+    <?php
+}
 ?>
 
 <div id="contentWrapper">

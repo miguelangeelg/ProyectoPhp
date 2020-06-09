@@ -2,6 +2,6 @@
     const SERVIDOR 	= 'localhost';
     const NAMEDB 	= 'pruebacolegio';
     const USER 		= 'root';
-    const PASSWORD 	= 'adminroot';
+    const PASSWORD 	= '';
     const CHARSET 	= 'utf8';
 ?>

@@ -26,7 +26,7 @@
             'int'           => '[0-9]+',
             'float'         => '[0-9\.,]+',
             'tel'           => '[0-9+\s()-]+',
-            'text'          => '[\p{L}0-9\s-.,;:!"%&()?+\'°#\/@]+',
+            'text'          => /*'[\p{L}0-9\s-.,;:!"%&()?+\'°#\/@]+',*//*'[A-Za-z0-9_~\-!@#\$%\^&\*\(\)]+$',*/'[ A-Za-z0-9_~\-!@#\$%\^&\?\*\.\(*\)]',
             'file'          => '[\p{L}\s0-9-_!%&()=\[\]#@,.;+]+\.[A-Za-z0-9]{2,4}',
             'folder'        => '[\p{L}\s0-9-_!%&()=\[\]#@,.;+]+',
             'address'       => '[\p{L}0-9\s.,()°-]+',
@@ -85,7 +85,27 @@
             
                 $regex = '/^('.$this->patterns[$name].')$/u';
                 if($this->value != '' && !preg_match($regex, $this->value)){
+                    $this->errors[] = 'Formato campo '.$this->name.' no valido.';
+                }
+                
+            }
+            return $this;
+            
+        }
+
+        public function patternX2($name){
+            
+            if($name == 'array'){
+                
+                if(!is_array($this->value)){
                     $this->errors[] = 'Formato campo '.$this->name.' non valido.';
+                }
+            
+            }else{
+            
+                $regex = $this->patterns[$name];
+                if($this->value != '' && !preg_match($regex, $this->value)){
+                    $this->errors[] = 'Formato campo '.$this->name.' no valido.';
                 }
                 
             }
@@ -103,7 +123,7 @@
             
             $regex = '/^('.$pattern.')$/u';
             if($this->value != '' && !preg_match($regex, $this->value)){
-                $this->errors[] = 'Formato campo '.$this->name.' non valido.';
+                $this->errors[] = 'Formato campo '.$this->name.' no valido.';
             }
             return $this;
             
@@ -158,9 +178,12 @@
         }
         
         public function birthdateformat(){
-            $dt = date_create_from_format($value);
-            $dt->format('Y-m-d');
-            return $dt;
+            if(!DateTime::createFromFormat('Y-m-d',$this->value)){
+                $this->errors[] = 'Formato de campo Fecha no valido.';
+            }
+            return $this;
+            //$dt->format('Y-m-d');
+            //return true;
         }
         /**
          * Verifica se il valore è
@@ -173,6 +196,13 @@
             if(filter_var($value, FILTER_VALIDATE_INT)) return true;
         }
         
+        public function valide_email($value){
+            if(filter_var($value,FILTER_VALIDATE_EMAIL)){
+                return true;
+            }else{
+                $this->errors[] = 'Formato de campo '.$this->name.' no valido.';
+            }
+        }
         /**
          * Verifica se il valore è
          * un numero float

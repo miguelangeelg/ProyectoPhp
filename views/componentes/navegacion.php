@@ -20,7 +20,7 @@ session_start();
         <div id="header">
        
             <div class="logo">
-                <center class="centerlogo" > 
+                <center class="centerlogo" id="centerlogo" > 
                 	<img align="center" src="../img/logo.png" id="logo" alt="">
 
                 </center>

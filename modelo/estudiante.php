@@ -39,9 +39,8 @@ class estudiante{
     }
 
     public function RegistrarEstudiante(){
-        if ($this->ExisteEstudiante()) {
           try {
-            $sql = "CALL insertar_estudiante(:id,:pass,:rol,:nomb,:apll,:fechna,:gen,:email,:tel,:dir,:tipoid,:grup,:periodo)";
+            $sql = "CALL insertar_estudiante(:id,:pass,:rol,:nomb,:apll,:fechna,:gen,:email,:tel,:dir,:tipoid,:grup,:periodo,@afrows)";
             $sql = $this->conexionDB->connect()->prepare($sql);
             $sql->bindValue('id',$this->documento,PDO::PARAM_STR);
             $sql->bindValue('pass',$this->password,PDO::PARAM_STR);
@@ -50,6 +49,7 @@ class estudiante{
             $sql->bindValue('apll',$this->apellido,PDO::PARAM_STR);
             $sql->bindValue('fechna',$this->fechaNa,PDO::PARAM_STR);
             $sql->bindValue('gen',$this->genero,PDO::PARAM_INT);
+            $sql->bindValue('email',$this->email,PDO::PARAM_STR);
             $sql->bindValue('tel',$this->telefono,PDO::PARAM_STR);
             $sql->bindValue('dir',$this->direccion,PDO::PARAM_STR);
             $sql->bindValue('tipoid',$this->tipid,PDO::PARAM_INT);
@@ -63,9 +63,6 @@ class estudiante{
           } catch (Exception $e) {
             die("Hubo un error hay registrar el estudiante debido a: ".$e);
           }
-        }else{
-            return false;
-        }
     }
 
     public function ExisteEstudiante(){

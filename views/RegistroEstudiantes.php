@@ -1,4 +1,5 @@
 <?php
+
 require('../controller/CtrGrupo.php');
 include("../views/componentes/navegacion.php");
 
@@ -21,13 +22,17 @@ if(isset($_SESSION["usuario"])){
     </script>
     <?php
 }
+
+// require_once('../controller/CtrGrupo.php');
+// include_once("../views/componentes/navegacion.php");
+
      
     //LA SECCION Y COOKIES POR AQUI POR FAVOR
     /*if (!isset($_SESSION)){
           //$inactividad = 60;
           //ini_set('session.gc_maxlifetime',$inactividad);
         session_start();
-        if(!isset($_SESSION['InfoSesion'])){
+        if(!isset($_SESSION['usuario'])){
             header("Location: /ProyectoPhp/views/login.php");
             exit;
         }
@@ -67,13 +72,13 @@ if(isset($_SESSION["usuario"])){
                             </div>
                             <div class="form-group col-md-5 justify-content-center align-self-center">
                                 <legend class="col-form-label pt-0 d-flex justify-content-center" for="Tid">Tipo Documento:</legend>
-                                <div class="form-check form-check-inline " id="Tid">
+                                <div class="form-check form-check-inline" id="Tid">
                                     <input class="form-check-input" type="radio" id="CC" name="tipoid" value="2" <?php if(isset($tipid)){if($tipid==2) echo "checked";}else{echo "checked";} ?>>
                                     <label class="form-check-label" for="CC">CC</label>
                                 </div>
                                 <div class="form-check form-check-inline" id="Tid">
-                                    <input class="form-check-input" type="radio" id="CC" name="Tipoid" value="1" <?php if(isset($tipid)){if($tipid==1) echo "checked";} ?>>
-                                    <label class="form-check-label" for="CC">TI</label>
+                                    <input class="form-check-input" type="radio" id="TI" name="tipoid" value="1" <?php if(isset($tipid)){if($tipid==1) echo "checked";} ?>>
+                                    <label class="form-check-label" for="TI">TI</label>
                                 </div>
                             </div>
                         </div>
@@ -170,6 +175,19 @@ if(isset($_SESSION["usuario"])){
                 </fieldset>
                 <!--<a href="gestionAdministrador.php" class="buttonRegresar" style="vertical-align:top"><span>Regresar</span></a>-->
             </form>
+            <?php 
+                if(isset($Errores)&& is_array($Errores)){
+                    echo '<div class="col-md-4 justify-content-center align-self-center">';
+                    $html = '<ul>';
+                        foreach($Errores as $error){
+                            $html .= '<li>'.$error.'</li>';
+                        }
+                    $html .= '</ul>';
+                    echo $html;
+                    echo '</div>';
+                }
+            
+            ?>
         </section>
     </div>
 </div>
@@ -186,59 +204,63 @@ if(isset($_SESSION["usuario"])){
         $("#fgrupo").css({"cssText":"left: 0 !important"});
         $("#fmateria").css({"cssText":"left: 0 !important"});
         $("#fperiodo").css({"cssText":"left: 0 !important"});
-        $("#form_est").css({"cssText":"height: auto !important"});
+        $("#form_est").css({"cssText":"height: 1080 !important"});
         $("#contentWrapper").css({"cssText":"background-color: transparent !important"});                           
         //$("#margengroup").css({"cssText":"margin-right: 3px !important, margin-left: 3px !important"});
-        var $empty = true;
+        var $empty = false;
         var divexist = false;
         <?php 
             if(isset($Consultar)&&($Consultar==true)){
                 ?>
-                    $("#frmMatricula").submit((e)=> {
-                    if($("#errorAlert").length>0){
-                        divexist=true;
-                    }
-                    $('input[type=text]').each(function(){
-                        if($.trim($(this).val()).length==0){
-                            if(divexist==false){
-                                var $newdiv1 = $( '<div class="alert alert-danger fade show" id="errorAlert"><strong>Campo Requerido!</strong><button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-                                $(this).parent().append($newdiv1);
-                            }
-                            //$("#errorAlert").hide().slideDown(400).removeClass('hide')
-                            e.preventDefault();
-                            $empty =false;
+                $("#frmMatricula").submit((e)=> {
+                        if($("#errorAlert").length>0){
+                            divexist=true;
                         }
-                    });
+                        $('input[type=text]').each(function(){
+                            if($.trim($(this).val()).length==0){
+                                if(divexist==false){
+                                    var $newdiv1 = $( '<div class="alert alert-danger fade show" id="errorAlert"><strong>Campo Requerido!</strong><button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                                    $(this).parent().append($newdiv1);
+                                    e.preventDefault();
+                                }
+                                $empty =true;
+                            }else{
+                                $empty =false;
+                            }
+                            
+                        });
                     if ($empty) {
-                        return false;
+                        return false;        
                     }
                 });
                 <?php
+            }else{
+                ?> 
+                    $("#frmMatricula").submit((e)=> {
+                        if($("#errorAlert").length>0){
+                                divexist=true;
+                        }
+                            if($.trim($('#doc').val()).length==0){
+                                if(divexist==false){
+                                    var $newdiv1 = $( '<div class="alert alert-danger fade show" id="errorAlert"><strong>Campo Requerido!</strong><button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                                    $('#doc').parent().append($newdiv1);
+                                }
+                            $empty =false;
+                            return false;
+                            }
+                    });
+                <?php
             }
         ?>
-        $("#frmMatricula").submit((e)=> {
-            if($("#errorAlert").length>0){
-                        divexist=true;
-            }
-            if($.trim($('#doc').val()).length==0){
-                if(divexist==false){
-                        var $newdiv1 = $( '<div class="alert alert-danger fade show" id="errorAlert"><strong>Campo Requerido!</strong><button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-                        $('#doc').parent().append($newdiv1);
-                }
-            e.preventDefault();
-            $empty =false;
-            return false;
-            }
-        });
         /*$('input[type=text]').on('keyup', function(e) {
             if($("#errorAlert").length>0){
                 $(".alert").alert('close');
             }
         });*/
-        $(".alert").find(".close").on("click", function (e) {
+        /*$(".alert").find(".close").on("click", function (e) {
             e.stopPropagation();
             e.preventDefault();
-        });
+        });*/
         <?php 
             if(isset($Consultar)){
                 if($Consultar==true){
@@ -304,27 +326,22 @@ if(isset($_SESSION["usuario"])){
                 });*/
                 <?php
             }
+        if(isset($Consultar)&& $Consultar==false){?>
+                
+                $("#fName").val("");
+                $("#fApll").val("");
+                $("#fDir").val("");
+                $("#fTel").val("");
+                $("#fCorreo").val("");
+                $("#fPass").val("");
+                $("#Date").val("");
+
+            <?php
+        }
         ?>
-         $('#doc').attr('readonly', false);
-        $('#fName').attr('readonly', true);
-        $('#fName').css({"cssText":"background-color: #E7E7E7 !important"});
-        $('#fApll').attr('readonly', true);
-        $('#fApll').css({"cssText":"background-color: #E7E7E7 !important"});
-        $('#fDir').attr('readonly', true);
-        $('#fDir').css({"cssText":"background-color: #E7E7E7 !important"});
-        $('#fTel').attr('readonly', true);
-        $('#fTel').css({"cssText":"background-color: #E7E7E7 !important"});
-        $('#fCorreo').attr('readonly', true);
-        $('#fCorreo').css({"cssText":"background-color: #E7E7E7 !important"});
-        $('#fPass').attr('readonly', true);
-        $('#fPass').css({"cssText":"background-color: #E7E7E7 !important"});
-        $('#Date').attr('readonly', true);
-        $('#Date').css({"cssText":"background-color: #E7E7E7 !important"});
-        $(':radio:not(:checked)').attr('disabled', true);
-        $('#fgrupo option:not(:selected)').attr('disabled',true);
     });
 </script>
 
 <?php 
-    include("../views/componentes/footer.php");
+    include_once("../views/componentes/footer.php");
 ?>

@@ -4,15 +4,15 @@ require_once('../controller/ValidarLRP.php');
 require('../modelo/estudiante.php');
 
 /*Atributos Tabla persona*/
-$documento = filtrarDatos('documento');
-$nombres = filtrarDatos('Nombre');
-$apellidos = filtrarDatos('Apell');
-$FechaNa = filtrarDatos('FechaNa');
-$genero = filtrarDatos('genero');
-$email = filtrarDatos('correo');
-$telefono = filtrarDatos('tel');
-$direccion = filtrarDatos('direccion');
-$TipoId = filtrarDatos('tipoid');
+$documento = trim(filtrarDatos('documento'));
+$nombres = trim(filtrarDatos('Nombre'));
+$apellidos = trim(filtrarDatos('Apell'));
+$FechaNa = trim(filtrarDatos('FechaNa'));
+$genero = trim(filtrarDatos('genero'));
+$email = trim(filtrarDatos('correo'));
+$telefono = trim(filtrarDatos('tel'));
+$direccion = trim(filtrarDatos('direccion'));
+$TipoId = trim(filtrarDatos('tipoid'));
 
 /*Atributos tabla usuario */
 $password = filtrarDatos('pass');
@@ -23,13 +23,12 @@ $grupo = filtrarDatos('grupo');
 /*Atributos tabla detalle */
 $periodo = filtrarDatos('periodo');
 
-$Errores= array();
+$Errores;
 
 if(isset($_POST['frmMatricular'])){
 
 	$results = validar($documento,$nombres,$apellidos,$FechaNa,$genero,$email,$telefono,$direccion,$TipoId,$password,$grupo,
 						$periodo);
-	print_r($results);
 	
 	if(!is_array($results)){
 		$est = new estudiante();
@@ -41,21 +40,32 @@ if(isset($_POST['frmMatricular'])){
 		$est->setEmail($email);
 		$est->setTelefono($telefono);
 		$est->setDireccion($direccion);
+		$est->settipid($TipoId);
 		$est->setpassword($password);
 		$est->setgrupo($grupo);
 		$est->setperiodo($periodo);
-	}
-	if(isset($FechaNa)){
-		?>
-				<script>
-					alert('Fecha de nacimiento: <?php echo $FechaNa?>');
-					location.href="../views/RegistroEstudiantes.php";
-				</script>
-		<?php
-	}
 
-	$Consultar=false;
-	require('../views/RegistroEstudiantes.php');
+		$matr = $est->RegistrarEstudiante();
+		$Consultar=false;
+		if(isset($matr)&&($matr==true)){
+			?>
+					<script>
+						alert('Matricula registrada con exito');
+					</script>
+			<?php
+		}else{
+			?>
+					<script>
+						alert('No se pudo matricular al estudiante');
+					</script>
+			<?php
+		}
+		require('../views/RegistroEstudiantes.php');	
+	}else{
+		$Errores = $results;
+		$Consultar=false;
+		require('../views/RegistroEstudiantes.php');
+	}
 	
 }else if(isset($_POST['frmBuscar'])) {
 	$Consultar = false;
@@ -68,6 +78,7 @@ if(isset($_POST['frmMatricular'])){
 		$est = new estudiante();
 		$est->setDocumento($documento);
 		$datos =  $est->BuscarEstudiante();
+		$Consultar = true;
 
 		if(isset($datos) && count($datos)>0){
 			?>
@@ -75,7 +86,6 @@ if(isset($_POST['frmMatricular'])){
 					alert('El estudiante ya se encuentra registrado');
 				</script>
 			<?php
-			$Consultar = true;
 			$documento = $datos[0]->documento;
 			$nombres = $datos[0]->nombre;
 			$apellidos = $datos[0]->apellido;
@@ -90,7 +100,7 @@ if(isset($_POST['frmMatricular'])){
 		}else{
 			?>
 				<script>
-					alert('No Se encontro el estudiante');
+					alert('No se encontro el estudiante');
 				</script>
 			<?php
 			require('../views/RegistroEstudiantes.php');
@@ -102,9 +112,17 @@ function validar($documento,$nombres,$apellidos,$FechaNa,$genero,$email,$telefon
 	$validate = new Validation();
 
 	$validate->name('Documento')->value($documento)->pattern('int')->required();
-	$nombres->name('Nombres')->value($nombres)->pattern('')->required();
-	$validate->name('Email')->value($email)->pattern('email')->required();
+	$validate->name('Nombres')->value($nombres)->pattern('words')->required();
+	$validate->name('Apellidos')->value($apellidos)->pattern('words')->required();
+	$validate->name('Email')->valide_email($email);
 	$validate->value($FechaNa)->birthdateformat()->required();
+	$validate->name('Genero')->value($genero)->pattern('int')->required();
+	$validate->name('Teléfono')->value($telefono)->pattern('int')->required();
+	$validate->name('Dirección')->value($direccion)->required();
+	$validate->name('Tipo de identificación')->value($TipoId)->pattern('int')->required();
+	$validate->name('Contraseña')->value($password)->required();
+	$validate->name('Grupo')->value($grupo)->pattern('int')->required();
+	$validate->name('Periodo')->value($periodo)->pattern('int')->required();
 
 	if($validate->isSuccess()){
 		return true;

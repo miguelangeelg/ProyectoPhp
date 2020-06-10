@@ -6,7 +6,7 @@ $(document).ready(function(){
         url: "../controller/ctrNota.php",
         data: {periodo},
         success: function (response) {
-            
+                console.log(response)
                 //$("#response").html(response);
                  var tablaNotas="";
                 var json=JSON.parse(response);

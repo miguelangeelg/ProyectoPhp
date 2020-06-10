@@ -1,8 +1,40 @@
 <?php
 include("./componentes/navegacion.php");
 require ("../controller/ctrPeriodo.php");
-?>
 
+
+if(isset($_SESSION["usuario"]))
+{
+    $rol       =  json_decode($_SESSION["usuario"])->rol;
+    $documento =  json_decode($_SESSION["usuario"])->documento;
+    $nombres   = json_decode($_SESSION["usuario"])->nombre . " " . json_decode($_SESSION["usuario"])->apellido;
+    $correo    = json_decode($_SESSION["usuario"])->correo;
+    $telefono  = json_decode($_SESSION["usuario"])->telefono;
+    $grupo     = json_decode($_SESSION["usuario"])->grupo;
+    if($rol!=2){
+        ?>
+        <script>
+         alert('¡Acceso denegado! No cuenta con permisos');
+        location.href="index.php"
+        </script>
+
+        <?php
+    }
+
+
+}else{
+    ?>
+    <script>
+     alert('¡Acceso denegado! No cuenta con permisos');
+    location.href="index.php"
+    </script>
+
+    <?php
+
+}
+
+?>
+      
 
         <div><p><span id="response"></span></p></div>
  
@@ -15,12 +47,20 @@ require ("../controller/ctrPeriodo.php");
         <h2>INFORMACIÓN DEL ESTUDIANTE</h2>
     </section>
     <center>
+  
+
     <section align="center" class="info_items">
-        <p><span class="fa fa-envelope"></span>Documento : 100074612</p>
-        <p><span class="fa fa-mobile"></span>Nombres : Fulanito De Tal</p>
-        <p><span class="fa fa-mobile"></span>Correo : correo@correo.com</p>
-        <p><span class="fa fa-mobile"></span>Teléfono : 333022232</p>
-        <p><span class="fa fa-mobile"></span>Grupo : 8B</p>
+        <?php  
+            if(isset($_SESSION["usuario"])){
+                echo '
+                <p><span class="fa fa-envelope"></span>Documento :'.$documento.'</p>
+                <p><span class="fa fa-mobile"></span>Nombres : '.$nombres.' </p>
+                <p><span class="fa fa-mobile"></span>Correo : '.$correo.' </p>
+                <p><span class="fa fa-mobile"></span>Teléfono : '.$telefono.' </p>
+                <p><span class="fa fa-mobile"></span>Grupo : '.$grupo.' </p>
+                ';
+                }
+            ?>
     </section>
     </center>
 
@@ -75,6 +115,11 @@ require ("../controller/ctrPeriodo.php");
         <script src="../js/ctrVerNotas.js"></script>
    <?php 
     include("./componentes/footer.php");
+    
+
+
    ?>
+
+
 
   

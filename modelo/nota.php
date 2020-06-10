@@ -4,19 +4,19 @@ require('../db/ConectarNotas.php');
 
 class Nota
 {
-    private $periodo;
+ 
     private $conexionDB;
     public function __construct(){        
         $this->conexionDB = new Conectar();	
-        $this->periodo=$_POST["periodo"];							
+       					
     }
     
     public function __destruct() {
     	
        	
    }
-   public function guardarNota(){
-      $sql = "SELECT m.nombre,d.Nota1,d.Nota2,d.Nota3,d.Nota4,d.Nota5,d.NotaDefinitiva from detalle d inner join materia m on m.codigo=d.codMateria WHERE  docEstudiante='16161616' and codPeriodo='$this->periodo' ";
+   public function guardarNota($periodo,$documento){
+      $sql = "SELECT m.nombre,d.Nota1,d.Nota2,d.Nota3,d.Nota4,d.Nota5,d.NotaDefinitiva from detalle d inner join materia m on m.codigo=d.codMateria WHERE  docEstudiante='$documento' and codPeriodo='$periodo' ";
     $query = $this->conexionDB->connect()->query($sql);
     while ($consulta = mysqli_fetch_array($query)) {
 

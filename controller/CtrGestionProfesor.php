@@ -5,8 +5,8 @@ require('../modelo/detallesNota.php');
     }
 
 $exisestu=0;
-$materia = filtrarDatos('materia');
-$grupo = filtrarDatos('grupo');
+$materia = trim(filtrarDatos('materia'));
+$grupo = trim(filtrarDatos('grupo'));
 $periodo = filtrarDatos('periodo');
 $documentoForm = filtrarDatos('documento');
 $n1 = filtrarDatos('n1');
@@ -15,9 +15,7 @@ $n3 = filtrarDatos('n3');
 $n4 = filtrarDatos('n4');
 $n5 = filtrarDatos('n5');
 
-
-echo $materia;
-
+$modelo =new detallesNota();
 if(isset($_POST["frmConsultar"])){
 	
 	$var1=1;	
@@ -38,13 +36,11 @@ if(isset($_POST["frmConsultar"])){
 		</script>
 		<?php
 	}else{
-		$modelo =new detallesNota();
+	
 		$exisestu=$modelo->ExisteEstudiantePorProfesor($documento,$documentoForm,$materia,$grupo);
 		if($exisestu==1){
-			
-			?>
-			<script>alert('Existe');</script>
-			<?php
+		$ResultadoNotas=$modelo->BuscarNotas($documento,$documentoForm,$materia,$grupo,$periodo);
+		
 		}else{
 			?>
 		<script>alert('El estudiante no existe en la base de datos de SISCA');</script>
@@ -52,15 +48,22 @@ if(isset($_POST["frmConsultar"])){
 		}
 	}
 }
-else if(isset($_POST["frmBuscar"])){
-
-	    
-}
-
-else if(isset($_POST["frmActualizar"])){
-	
-	
-      
+else if(isset($_POST["frmCancelar"])){
+?>
+<script>
+location.href="gestionProfesor.php";
+</script>
+<?php
+}else if(isset($_POST["frmAsignar"])){
+	  $ResulAsignacion=$modelo->ActualizarNotas($documentoForm,$materia,$periodo,$n1,$n2,$n3,$n4,$n5); 
+	    if($ResulAsignacion==1){
+			?>
+			<script>
+			alert('¡Notas actualizadas con exito!');
+			location.href="gestionProfesor.php";
+			</script>
+			<?php
+		}
 }
 
 

@@ -29,6 +29,8 @@ if(isset($_SESSION["usuario"])){
     </script>
     <?php
 }
+
+
 ?>      
         <div id="contentWrapper">
         <div >
@@ -59,13 +61,15 @@ if(isset($_SESSION["usuario"])){
 
         </center>
         </div>  
-        <select name="periodo" class="classic" style="top: 40px; left:45%;">
+        
+        <form  method="post" style="margin: 50px;">
+        <select name="periodo" class="classic" style="top:-20px; left:45%;">
   <option value="1">Periodo 1</option>
-  <option value="2">Peiodo 2</option>
+  <option value="2">Periodo 2</option>
 </select>
 
 
-        <select name="materia" class="classic" style="top: 40px; left:5%;">
+        <select name="materia" class="classic" style="top: -20px; left:5%;">
         <?php 
                                 $i=0;
                                 while(isset($materias[$i]->codigo)){
@@ -79,7 +83,7 @@ if(isset($_SESSION["usuario"])){
                                 ?>
 </select> 
 
-<select name="grupo" class="classic" style="top: 40px; left:54%;">
+<select name="grupo" class="classic" style="top:-20px; left:54%;">
 <?php 
                                 $i=0;
                                 while(isset($gruposProfesor[$i]->codigo)){
@@ -92,44 +96,55 @@ if(isset($_SESSION["usuario"])){
                                 }
                                 ?>
 </select>
-
-        
-
-        <form  method="post" class="form_contact">
-    <h2>ASIGNACIÓN DE CALIFICACIONES</h2>
+<div class="form_contact">
+<fieldset class="FormularioCentral_Profesor">
+    <legend id="TituloAdmin">ASIGNACIÓN DE CALIFICACIONES</legend>
+    <center>
     <div class="user_info">
+
         <label for="names">Documento: *</label>
-        <input type="number" id="names" name="documento" style="border-radius: 20px / 10px;" value="<?php
-								if (isset($documentoForm))
-									echo("$documentoForm"); ?>"> 
+        <input type="number" <?php if($exisestu==1){echo 'readonly="true"';}?>id="names" name="documento" style="border-radius: 20px / 10px; width :50%;" value="<?php
+	if (isset($documentoForm))
+	echo("$documentoForm"); ?>"><br> 
 
     <span  style="font-weight: bold; color: red" >
-							<?php 
+			<?php 
                                 if (isset($error)){
                                         echo("$error");
                                 }
-							?>            	
-             				</span>
+		        ?>            	
+   </span>
+   
 <?php if($exisestu==1){ ?>
         <label for="phone">Nota 1:</label>
-        <input type="number" name="n1" id="phone" style="border-radius: 20px / 10px;">
+        <input type="text" name="n1" id="phone" style="border-radius: 20px / 10px; width :25%;" value="<?php echo $ResultadoNotas[0]->Nota1 ?>"><br> 
 
         <label for="phone">Nota 2:</label>
-        <input type="number" name="n2" id="phone" style="border-radius: 20px / 10px;">
+        <input type="text" name="n2" id="phone" style="border-radius: 20px / 10px; width :25%;" value="<?php echo $ResultadoNotas[0]->Nota2 ?>"><br> 
 
         <label for="phone">Nota 3:</label>
-        <input type="number" name="n3" id="phone" style="border-radius: 20px / 10px;">
+        <input type="text" name="n3" id="phone" style="border-radius: 20px / 10px; width :25%;" value="<?php echo $ResultadoNotas[0]->Nota3 ?>"><br> 
 
         <label for="phone">Nota 4:</label>
-        <input type="number" name="n4" id="phone" style="border-radius: 20px / 10px;">
+        <input type="text" name="n4" id="phone" style="border-radius: 20px / 10px; width :25%;" value="<?php echo $ResultadoNotas[0]->Nota4 ?>"><br> 
 
         <label for="phone">Nota 5:</label>
-        <input type="number" name="n5" id="phone" style="border-radius: 20px / 10px;">
+        <input type="text" name="n5" id="phone" style="border-radius: 20px / 10px;width :25%;" value="<?php echo $ResultadoNotas[0]->Nota5 ?>"><br> 
 <?php } ?>
-
-        <button type="submit" name="frmConsultar" class="button3" value="Consultar"  >Consultar</button>
-        <button type="submit" name="frmAsignar" class="button3" value="Asignar"  >Asignar</button>
+        
     </div>
+    </div>
+    </center>
+    </fieldset>
+    <center>
+    <?php if($exisestu!=1){?>
+    <button type="submit" name="frmConsultar" class="button3" value="Consultar"  >Consultar</button>
+    <?php } ?>
+    <?php if($exisestu==1){?>
+        <button type="submit" name="frmAsignar" class="button3" value="Asignar"  >Asignar</button>
+    <?php } ?>
+        <button type="submit" name="frmCancelar" class="button3" value="Asignar"  >Cancelar</button>
+        </center>
 </form>
         </div><!--End of Content Wrapper-->
    <?php 

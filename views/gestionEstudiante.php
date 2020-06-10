@@ -80,7 +80,7 @@ if(isset($_SESSION["usuario"]))
     }
     ?>
     </select>
-<?php include("./componentes/botonGenerarPdfEstu.php");  ?>
+
     <div class="user_info">
 
 <table class="tablaCalificaciones">

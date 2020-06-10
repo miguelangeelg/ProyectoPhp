@@ -67,6 +67,7 @@ class estudiante{
             return false;
         }
     }
+
     public function ExisteEstudiante(){
 		try {
             $sql = "select * from estudiante where documento = '$this->documento' ";
@@ -98,6 +99,23 @@ class estudiante{
         }else{
             return null;
         }
+    }
+
+    public function ExisteEstudiantePorProfesor($documentoPro,$documentoEstu){
+      try {
+              $sql = "SELECT DISTINCT ET.documento FROM grupo GP INNER JOIN estudiante ET ON GP.codigo=ET.grupo INNER JOIN detalle DT ON DT.docEstudiante=ET.documento INNER JOIN materia MT ON MT.codigo=DT.codMateria WHERE MT.profesor=$documentoPro  AND ET.documento= $documentoEstu";
+              $query = $this->conexionDB->connect()->prepare($sql);
+              
+              $query->execute(); 
+              if($query->rowCount()){
+                  return 1;
+              }else{
+                  return 0;
+              }
+              return false;
+          } catch (Exception $e) {
+              die ("Se produjo un error:".$e->getMessage());
+          }
     }
     
     /*private function BuscarPeriodoEstudiante($doc){

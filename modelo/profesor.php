@@ -10,6 +10,7 @@ class Profesor
     private $fechaNacimiento;
 	private $genero;
 	private $usuario;
+	private $materia;
     private $email;
     private $telefono;
     private $direccion;
@@ -32,6 +33,10 @@ class Profesor
 
 	public function setNombre($nombre){
 		$this->nombre = $nombre;
+	}
+
+	public function setMateria($materia){
+		$this->materia = $materia;
 	}
 	public function setApellido($apellido){
 		$this->apellido = $apellido;
@@ -78,12 +83,23 @@ class Profesor
 		$registroUsuario=$this->registrarUsuario();   
 		if($registroUsuario==1)
 		{
-			$registroPersona=$this->registrarPersona();
-			if($registroPersona==1){
-				return 1;
-			}else{
-				return 0;
-			}
+				$registroPersona=$this->registrarPersona();
+				if($registroPersona==1){
+				
+					$regis=$this->registrarTablaProfesor();
+					if($regis==1){
+						$regisMateria=$this->registrarMateria();
+						if($regisMateria==1){
+							return 1;
+						}else{
+							return 0;
+						}
+					}else{
+						
+					}
+				}else{
+					
+				}
 		}
 		else{
 			echo"Hay problemas con la sentencia SQL";
@@ -111,6 +127,38 @@ class Profesor
 					
 	}
 
+	public function registrarTablaProfesor(){
+		try{
+			$sql = "INSERT INTO profesor (";
+			$sql .= "documento,profesion";
+			$sql .= ") VALUES (";
+			$sql .= "'$this->documento','$this->profesion');";		
+			$stmt = $this->conexionDB->connect()->prepare($sql);
+			$stmt->execute();
+		} catch (Exception $e) {
+			die ("Se produjo un error $e");
+		}
+	 
+		if(isset($stmt)){
+			return 1;
+		}else{
+			return 0;			
+		}	
+					
+	}
+
+	
+	public function buscarMateria($nombreMateria){
+		$sql = "SELECT * FROM materia WHERE nombre = '$nombreMateria'";
+		$query = $this->conexionDB->connect()->prepare($sql);
+		
+		$query -> execute(); 
+		if($query->rowCount()){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
 	
 	public function buscarProfesor($documento){
 		$sql = "select * from persona where documento = $documento";
@@ -123,8 +171,46 @@ class Profesor
 			return 0;
 		}
 	}
+/*
+	public function buscarcodUltimaMateria(){
+		$sql = "SELECT * FROM materia";
+		$query = $this->conexionDB->connect()->prepare($sql);
+		$query -> execute(); 
+		 $result = $query->fetchAll(PDO::FETCH_OBJ);
+		$i=0;
+		$codigo=0
+		while(isset($result[$i]->codigo)){
+			$codigo2=$result[$i]->codigo;
+			if($codigo<$codigo2){
+				$codigo=$codigo2;
+			}
+			i++;
+		}
+		return $codigo;
+	}
+*/
 
-
+	public function registrarMateria(){
+		try{
+			$rol=1;
+			$sql = "INSERT INTO materia (";
+			$sql .= "codigo,nombre,profesor";
+			$sql .= ") VALUES (";
+			$sql .= "'$this->materia','$this->materia','$this->documento');";		
+			$stmt = $this->conexionDB->connect()->prepare($sql);
+			$stmt->execute();
+		} catch (Exception $e) {
+			die ("Se produjo un error $e");
+		}
+	 
+		if(isset($stmt)){
+			return 1;
+		}else{
+			return 0;			
+		}	
+						
+	}
+	
 	
 	public function registrarUsuario(){
 		try{

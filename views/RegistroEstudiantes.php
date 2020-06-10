@@ -1,6 +1,26 @@
 <?php
 require('../controller/CtrGrupo.php');
 include("../views/componentes/navegacion.php");
+
+
+if(isset($_SESSION["usuario"])){
+    $rol = json_decode($_SESSION["usuario"])->rol;
+    if($rol != 3){
+        ?>
+        <script>
+        alert('¡Acceso denegado! No cuenta con permisos');
+        location.href="index.php"
+        </script>
+        <?php
+    }
+}else{
+    ?>
+    <script>
+    alert('¡Acceso denegado! No cuenta con permisos');
+    location.href="index.php"
+    </script>
+    <?php
+}
      
     //LA SECCION Y COOKIES POR AQUI POR FAVOR
     /*if (!isset($_SESSION)){

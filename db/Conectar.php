@@ -42,8 +42,6 @@ class Conectar{
     }
     
 }
-$con=new Conectar();
-$con->connect();
 
 
 ?>

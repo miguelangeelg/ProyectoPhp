@@ -1,0 +1,1 @@
+"use strict";$(document).ready(function(){var o=$("#periodo").val();console.log(o),$.ajax({type:"POST",url:"../controller/ctrPeriodo.php",data:{periodo:o},success:function(o){console.log(o)}}),$("#periodo").on("change",function(){o=$("#periodo").val(),$.ajax({type:"POST",url:"../controller/ctrPeriodo.php",data:{periodo:o},success:function(o){console.log(o)}})})});

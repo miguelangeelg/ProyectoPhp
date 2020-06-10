@@ -112,37 +112,53 @@ $profeExiste=$modelo->buscarProfesor($documento);
 
 if($profeExiste==1){
     ?>
-
     <script>
     alert ('El profesor que desea registrar ya se encuentra en la base de datos de SISCA');
     location.href="../views/RegistroProfesor.php";
     </script>
-
     <?php
 }else{
-    $modelo->setNombre($nombres);
-    $modelo->setApellido($apellidos);
-    $modelo->setDireccion($direccion);
-    $modelo->setEmail($email);
-    $modelo->setTelefono($telefono);
-    $modelo->setUsuario($usuario);
-    $modelo->setProfesion($profesion);
-    $modelo->setTipoDocumento($tipoDocumento);
-    $modelo->setGenero($genero);
-    $modelo->setFechaNacimiento($fechaNacimiento);
-    $modelo->setDocumento($documento);
-    $modelo->setContraseña($contraseña);
-    $validacionRegistro=$modelo->registrarProfesor(); 
-    if($validacionRegistro==1){
-        $mensaje="Bienvenido: $nombres Ha sido registrado exitosamente en la base de datos de SISCA";
+	$MateriaExiste=$modelo->buscarMateria($materia);
+	
+	if($MateriaExiste==1){
+		?>
+		<script>
+		alert ('La materia ya se encuentra en la base de datos de SISCA');
+		location.href="../views/RegistroProfesor.php";
+		</script>
+		<?php
+	}else{
+	
+		$modelo->setNombre($nombres);
+		$modelo->setApellido($apellidos);
+		$modelo->setDireccion($direccion);
+		$modelo->setEmail($email);
+		$modelo->setTelefono($telefono);
+		$modelo->setUsuario($usuario);
+		$modelo->setProfesion($profesion);
+		$modelo->setTipoDocumento($tipoDocumento);
+		$modelo->setGenero($genero);
+		$modelo->setMateria($materia);
+		$modelo->setFechaNacimiento($fechaNacimiento);
+		$modelo->setDocumento($documento);
+		$modelo->setContraseña($contraseña);
+		$validacionRegistro=$modelo->registrarProfesor(); 
+	//	$validarMateria=$modelo->registrarMateria($materia);
+    //if($validarMateria==1){
+		
+		if($validacionRegistro==1){
+			$mensaje="Bienvenido: $nombres Ha sido registrado exitosamente en la base de datos de SISCA";
         ?>
-				<script>
-    alert ("<?php echo ($mensaje); ?>");
-    location.href="../views/RegistroProfesor.php";
-    </script>
-				<?php
+							<script>
+				alert ("<?php echo ($mensaje); ?>");
+				location.href="../views/RegistroProfesor.php";
+							</script>
+							<?php
+		}
+        
+	//}
 	}
-	}
+}
 	
 	
 }

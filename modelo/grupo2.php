@@ -3,7 +3,7 @@ if(!class_exists('Conectar')){
     require('../db/Conectar.php');
 }
 
-class Grupo{
+class Grupo2{
 
     /*Se requiere la clase conexion*/
     private $conexionDB;
@@ -25,15 +25,16 @@ class Grupo{
 		$this->grupo = $grupo;
 	}
 
-    public function listargrupos(){
-        $sql = "SELECT * FROM grupo";
+
+    public function listarGruposProfesor($docProfesor){
+        $sql = "SELECT DISTINCT  GP.codigo, GP.nombre FROM grupo GP INNER JOIN estudiante ET ON GP.codigo=ET.grupo INNER JOIN detalle DT ON DT.docEstudiante=ET.documento INNER JOIN materia MT ON MT.codigo=DT.codMateria WHERE MT.profesor=$docProfesor";
         $query = $this->ConexionDB->connect()->prepare($sql);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_OBJ);
         return $result;
-    }
+ 
 
-
+}
 }
 
 ?>

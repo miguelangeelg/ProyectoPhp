@@ -3,13 +3,13 @@ if(!class_exists('Conectar')){
     require('../db/Conectar.php');
 }
 
-class Grupo{
+class Materia{
 
     /*Se requiere la clase conexion*/
     private $conexionDB;
 
-    private $documento;
-    private $grupo;
+    private $codigo;
+    private $materia;
 
     public function __construct(){
         $this->ConexionDB = new Conectar();								
@@ -18,21 +18,20 @@ class Grupo{
     public function __destruct(){
     	
     }
-    public function setDocumento($documento){
-		$this->documento = $documento;
+    public function setCodigo($codigo){
+		$this->codigo = $codigo;
 	}
-	public function setgrupo($grupo){
-		$this->grupo = $grupo;
+	public function setMateria($materia){
+		$this->materia = $materia;
 	}
 
-    public function listargrupos(){
-        $sql = "SELECT * FROM grupo";
+    public function listarMateria($codProfesor){
+        $sql = "SELECT * FROM materia where profesor = $codProfesor";
         $query = $this->ConexionDB->connect()->prepare($sql);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
-
 
 }
 
